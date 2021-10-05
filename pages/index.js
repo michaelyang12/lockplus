@@ -1,7 +1,9 @@
 import Head from 'next/head';
-import Image from 'next/image';
+//import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 export default function Home() {
+  const router = useRouter();
   return (
     <div className="h-screen w-screen bg-black">
       <div className="block h-24 w-full border border-lockplus-blue"></div>
@@ -11,8 +13,10 @@ export default function Home() {
             <div className="text-6xl font-bold font-lockplus text-right text-lockplus-blue pr-4">
               lock+
             </div>
-            <button className="bg-lockplus-blue group h-6 w-24 absolute right-4 rounded-full focus:outline-none transform hover:scale-102 hover:text-white transition ease-out duration-100 mt-1.5">
-              <div className="h-auto w-auto mx-auto text-black group-hover:text-white font-light text-sm font-lockplus">
+            <button
+              className="bg-lockplus-blue group h-6 w-24 absolute right-4 rounded-full focus:outline-none transform hover:scale-105 hover:bg-lockplus-hoverblue transition ease-out duration-100 mt-1.5"
+              onClick={() => router.push('/order')}>
+              <div className="h-auto w-auto mx-auto text-black font-light text-sm font-lockplus">
                 Order Now
               </div>
             </button>
