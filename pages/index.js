@@ -7,14 +7,15 @@ export default function Home() {
   const router = useRouter();
   return (
     <div className="h-screen w-screen bg-black">
-      <div className="absolute top-0 right-0 content-right block h-24 w-34">
+      <div className="absolute top-4 right-2 content-right block h-24 w-34">
         <button onClick={() => router.push('/login')}>
-          <div className="relative top-0 right-0 text-sm font-light font-lockplus text-right text-lockplus-blue pr-4 hover:text-lockplus-hoverblue">
+          <div className="relative top-0 right-0 text-md font-light font-lockplus text-right text-lockplus-blue pr-4 hover:text-lockplus-hoverblue">
             sign in
           </div>
         </button>
+        <span className="text-lockplus-blue text-lg font-md -ml-2 mr-2">|</span>
         <button onClick={() => router.push('/register')}>
-          <div className="relative top-0 right-0 text-sm font-light font-lockplus text-right text-lockplus-blue pr-4 hover:text-lockplus-hoverblue">
+          <div className="relative top-0 right-0 text-md font-light font-lockplus text-right text-lockplus-blue pr-4 hover:text-lockplus-hoverblue">
             register
           </div>
         </button>
