@@ -35,6 +35,7 @@ export default function RegisterForm() {
                 />
                 <button 
                     className="bg-lockplus-blue group h-6 w-24 relative top-2 left-24 rounded-full focus:outline-none transform hover:scale-105 hover:bg-lockplus-hoverblue transition ease-out duration-100 mt-1.5"
+                    onClick={() => router.push('/home')}
                 >
                     register
                 </button>

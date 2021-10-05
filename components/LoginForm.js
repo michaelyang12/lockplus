@@ -6,9 +6,7 @@ export default function LoginForm() {
   return (
     <div className="w-2/3 h-96 mx-auto mt-162">
         <div className="flex justify-center block w-auto h-48 mt-24 m-4 ">
-            <div 
-                className="relative h-24 w-64 mt-14"
-            >
+            <div className="relative h-24 w-64 mt-14">
                 <button                         
                     className="text-6xl font-bold font-lockplus text-right text-lockplus-blue pr-4 ml-20 hover:text-lockplus-hoverblue"
                     onClick={() => router.push('/')}>
@@ -29,6 +27,7 @@ export default function LoginForm() {
                 />
                 <button 
                     className="bg-lockplus-blue group h-6 w-24 relative top-2 left-24 rounded-full focus:outline-none transform hover:scale-105 hover:bg-lockplus-hoverblue transition ease-out duration-100 mt-1.5"
+                    onClick={() => router.push('/home')}
                 >
                     sign in
                 </button>
