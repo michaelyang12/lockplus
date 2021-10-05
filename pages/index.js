@@ -11,8 +11,8 @@ export default function Home() {
             <div className="text-6xl font-bold font-lockplus text-right text-lockplus-blue pr-4">
               lock+
             </div>
-            <button className="bg-lockplus-blue h-6 w-24 absolute right-4 rounded-full focus:outline-none transform hover:scale-102 hover:bg-lockplus-hoverblue mt-1">
-              <div className="h-auto w-auto mx-auto text-black font-light text-sm font-lockplus">
+            <button className="bg-lockplus-blue group h-6 w-24 absolute right-4 rounded-full focus:outline-none transform hover:scale-102 hover:text-white transition ease-out duration-100 mt-1.5">
+              <div className="h-auto w-auto mx-auto text-black group-hover:text-white font-light text-sm font-lockplus">
                 Order Now
               </div>
             </button>
