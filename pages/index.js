@@ -4,7 +4,18 @@ import Image from 'next/image';
 export default function Home() {
   return (
     <div className="h-screen w-screen bg-black">
-      <div className="block h-24 w-full border border-lockplus-blue"></div>
+      <div className="absolute top-0 right-0 content-right block h-24 w-34">
+        <button>
+          <div className="relative top-0 right-0 text-sm font-light font-lockplus text-right text-lockplus-blue pr-4 hover:text-lockplus-hoverblue">
+            sign in
+          </div>
+        </button>
+        <button>
+          <div className="relative top-0 right-0 text-sm font-light font-lockplus text-right text-lockplus-blue pr-4 hover:text-lockplus-hoverblue">
+            register
+          </div>
+        </button>
+      </div>
       <div className="w-2/3 h-96 mx-auto mt-162">
         <div className="flex justify-center block w-auto h-48 mt-24 m-4 ">
           <div className="relative h-24 w-64 mt-14">
