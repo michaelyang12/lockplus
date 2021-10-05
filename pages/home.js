@@ -3,13 +3,13 @@ import Image from 'next/image';
 import HomeSidebar from '../components/HomeSidebar';
 
 export default function HomePage() {
-    return(
+  return (
     <>
-        <div className="h-screen w-screen bg-black">
-          <div className="relative content-center">
-            <HomeSidebar />
-         </div>
+      <div className="h-screen w-screen bg-lockplus-opacGray">
+        <div className="relative content-center">
+          <HomeSidebar />
         </div>
+      </div>
     </>
-    );
+  );
 }
