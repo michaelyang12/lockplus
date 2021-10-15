@@ -1,11 +1,8 @@
-import Head from 'next/head';
-import Image from 'next/image';
 import HomeSidebar from '../components/HomeSidebar';
 import LoginForm from '../components/LoginForm';
+import HistoryForm from '../components/HistoryForm';
 
-
-
-export default function HomePage() {
+function HistoryPage(props) {
 
   return (
     <div class="h-screen w-screen bg-lockplus-opacGray">
@@ -13,10 +10,12 @@ export default function HomePage() {
         <div>
           <HomeSidebar/>
         </div>
-        <div class= "relative flex container box-border h-screen w-screen p-4 border-4 visible text-lockplus-blue">
-            HOME
+        <div>
+          <HistoryForm/>
         </div>
       </div>
     </div>
   );
 }
+
+export default HistoryPage;
