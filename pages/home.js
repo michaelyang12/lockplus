@@ -13,7 +13,7 @@ export default function HomePage() {
         <div>
           <HomeSidebar/>
         </div>
-        <div class= "relative flex container box-border h-screen w-screen p-4 border-4 visible text-lockplus-blue">
+        <div class= "relative flex container box-border h-screen w-screen p-4 bg-gray-800 border-4 visible text-lockplus-blue">
             HOME
         </div>
       </div>
