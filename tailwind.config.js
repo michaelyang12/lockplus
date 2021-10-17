@@ -7,6 +7,7 @@ module.exports = {
         lockplus: {
           blue: '#0596FF',
           hoverblue: '#0586FF',
+          hoverGray: '#D1E5E8',
           opacGray: '#C4C4C4',
           placeholderGray: '#CFCFCF',
         },
