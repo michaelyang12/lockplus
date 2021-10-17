@@ -16,7 +16,7 @@ export default function Home() {
         <span className="text-lockplus-blue text-lg font-md -ml-2 mr-2">|</span>
         <button onClick={() => router.push('/register')}>
           <div className="relative top-0 right-0 text-md font-light font-lockplus text-right text-lockplus-blue pr-4 hover:text-lockplus-hoverblue">
-            register
+            register your lock
           </div>
         </button>
       </div>
@@ -38,7 +38,13 @@ export default function Home() {
             <div className="w-full h-auto">Affordable home security.</div>
             <div className="w-full h-auto">Advanced biometrics.</div>
             <div className="w-full h-auto">Safety, simpler than ever.</div>
-            <div className="w-full h-auto text-white">Learn More.</div>
+            <div className="w-full h-auto text-white">
+              <button
+                className="h-auto w-auto transform hover:scale-102 focus:outline-none text-left"
+                onClick={() => router.push('/learnmore')}>
+                Learn More.
+              </button>
+            </div>
           </div>
         </div>
       </div>
