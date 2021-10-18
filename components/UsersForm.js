@@ -4,6 +4,7 @@ import UsersFormSidebar from './user_page/user_sidebar/UsersFormSidebar';
 import UserComponent from './user_page/user_sidebar/UserComponent';
 import AddUserButton from './user_page/user_sidebar/AddUserButton';
 import AddUserModal from './user_page/AddUserModal';
+import { Button, Modal, ModalBody, ModalHeader, ModalFooter } from "reactstrap";
 
 function UsersForm() {
   var usersDisplay = [];
@@ -20,17 +21,13 @@ function UsersForm() {
     users.push(user)
     usersDisplay.push(
       <div key={i}>
-        <UserComponent clickAction={user.function} username={user.username} />
+        <UserComponent clickAction={user.function} username={user.username} user={user} />
       </div>);
   }
-  
-  const foo = () => userCount += 1;
-  const refresh = () => router.push('/users');
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const toggle = () => {
       setIsModalOpen(!isModalOpen);
-      console.log(isModalOpen);
   }
 
   return (
@@ -40,7 +37,9 @@ function UsersForm() {
             {usersDisplay}
             <AddUserButton clickAction={toggle}/>
           </UsersFormSidebar>
-          <AddUserModal open={isModalOpen} toggleFunc={toggle}/>
+        </div>
+        <div>
+          <AddUserModal open={isModalOpen} toggleFunc={toggle} usersArray={users}/>
         </div>
       </>
     );
