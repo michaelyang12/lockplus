@@ -1,4 +1,4 @@
-import SingleUserIcon from "../assets/icons/SingleUserIcon";
+import SingleUserIcon from "../../assets/icons/SingleUserIcon";
 
 function UserComponent(props) {
     return (

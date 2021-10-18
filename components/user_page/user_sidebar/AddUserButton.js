@@ -1,5 +1,4 @@
-import SingleUserIcon from "../assets/icons/SingleUserIcon";
-import AddUserIcon from "../assets/icons/AddUserIcon";
+import AddUserIcon from "../../assets/icons/AddUserIcon";
 
 function AddUserButton(props) {
     return (

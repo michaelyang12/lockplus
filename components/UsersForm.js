@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import HomeSidebar from './HomeSidebar';
-import UsersFormSidebar from './user_sidebar/UsersFormSidebar';
-import UserComponent from './user_sidebar/UserComponent';
-import AddUserIcon from './assets/icons/AddUserIcon';
-import AddUserButton from './user_sidebar/AddUserButton';
+import UsersFormSidebar from './user_page/user_sidebar/UsersFormSidebar';
+import UserComponent from './user_page/user_sidebar/UserComponent';
+import AddUserButton from './user_page/user_sidebar/AddUserButton';
+import AddUserModal from './user_page/AddUserModal';
 
 function UsersForm() {
   var usersDisplay = [];
@@ -12,7 +11,7 @@ function UsersForm() {
   var userCount = 5;
   const router = useRouter();
 
-  for (var i = 0; i < userCount/*this.props.userCount*/; i++) {
+  for (var i = 0; i < userCount; i++) {
     const num = i;
     var user = {
       "username": "user " + (i + 1),
@@ -27,15 +26,23 @@ function UsersForm() {
   
   const foo = () => userCount += 1;
   const refresh = () => router.push('/users');
-  const addUser = () => {userCount += 1; router.reload('/users');} 
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const toggle = () => {
+      setIsModalOpen(!isModalOpen);
+      console.log(isModalOpen);
+  }
 
   return (
-      <div class= "relative flex container box-border h-screen w-screen text-lockplus-blue">
-        <UsersFormSidebar>
-          {usersDisplay}
-          <AddUserButton clickAction={addUser}/>
-        </UsersFormSidebar>
-      </div>
+      <>
+        <div class="relative flex h-screen w-screen text-lockplus-blue justify-start">
+          <UsersFormSidebar>
+            {usersDisplay}
+            <AddUserButton clickAction={toggle}/>
+          </UsersFormSidebar>
+          <AddUserModal open={isModalOpen} toggleFunc={toggle}/>
+        </div>
+      </>
     );
 }
 
