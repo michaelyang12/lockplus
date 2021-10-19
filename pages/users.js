@@ -5,6 +5,8 @@ import { useState } from 'react';
 import AddUserModal from '../components/user_page/AddUserModal';
 
 function UsersPage(props) {
+  var usersList = [];
+
   return (
     <>
       <div class="h-screen w-screen bg-lockplus-opacGray">
@@ -13,7 +15,7 @@ function UsersPage(props) {
             <HomeSidebar/>
           </div>
           <div>
-            <UsersForm />
+            <UsersForm userlist = {usersList}/>
           </div>
         </div>
       </div>

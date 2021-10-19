@@ -6,22 +6,17 @@ import AddUserButton from './user_page/user_sidebar/AddUserButton';
 import AddUserModal from './user_page/AddUserModal';
 import { Button, Modal, ModalBody, ModalHeader, ModalFooter } from "reactstrap";
 
-function UsersForm() {
+function UsersForm(props) {
   var usersDisplay = [];
-  var users = [];
-  var userCount = 5;
+  //var users = [];
+  var userCount = props.userlist.length;
   const router = useRouter();
 
   for (var i = 0; i < userCount; i++) {
-    const num = i;
-    var user = {
-      "username": "user " + (i + 1),
-      "function":() => console.log("user " + (num + 1) + " clicked"),
-    }
-    users.push(user)
+    var currentUser = props.userlist[i];
     usersDisplay.push(
       <div key={i}>
-        <UserComponent clickAction={user.function} username={user.username} user={user} />
+        <UserComponent clickAction={currentUser.function} user={currentUser} />
       </div>);
   }
 
@@ -39,7 +34,7 @@ function UsersForm() {
           </UsersFormSidebar>
         </div>
         <div>
-          <AddUserModal open={isModalOpen} toggleFunc={toggle} usersArray={users}/>
+          <AddUserModal open={isModalOpen} toggleFunc={toggle} usersList={props.userlist}/>
         </div>
       </>
     );

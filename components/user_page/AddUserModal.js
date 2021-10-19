@@ -1,18 +1,31 @@
 import { useState, useEffect} from "react";
 import { Modal, ModalBody, ModalHeader, ModalFooter } from "reactstrap";
-import UsersFormSidebar from "./user_sidebar/UsersFormSidebar";
 
 function AddUserModal(props) {
     const [input, setInput] = useState("");
+    const [userExists, setDoesUserExist] = useState(false);
+
     const addUser = () => {
         if (input.length > 0) {
-            console.log(input + " Added!");
-            props.toggleFunc;
-            var user = {
-                "username": input,
-                "function": undefined,
+            for (var i = 0; i < props.usersList.length; i++) {
+                if (props.usersList[i].username == input) {
+                    setDoesUserExist(true);
+                    break;
+                } else {
+                    setDoesUserExist(false);
+                }
             }
-            props.usersArray.push(user);
+            if (!userExists) {
+                console.log(input + " Added!");
+                var user = {
+                    "username": input,
+                    "function": () => console.log(input + " clicked!"),
+                }
+                props.usersList.push(user);
+                useEffect(props.toggleFunc);
+            } else {
+                alert("User/Name already exists!");
+            }
         }
     }
 
