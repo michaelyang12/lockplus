@@ -21,7 +21,7 @@ export const PhotosForm = (props) => {
 
   return (
     <>
-      <div className="relative flex container box-border h-screen w-screen p-4 border-4 visible text-lockplus-blue">
+      <div className="relative flex container h-screen w-screen p-4 visible text-lockplus-blue">
         PHOTOS
       </div>
       <AddPhotoButton

@@ -4,10 +4,9 @@ import HomeSidebar from './HomeSidebar';
 
 function HistoryForm() {
   return (
-      <div class= "relative flex container box-border h-screen w-screen p-4 border-4 visible text-lockplus-blue">
-            HISTORY
-      </div>
-    );
+    <div class="relative flex container h-screen w-screen p-4 visible text-lockplus-blue">
+      HISTORY
+    </div>
+  );
 }
 export default HistoryForm;
-

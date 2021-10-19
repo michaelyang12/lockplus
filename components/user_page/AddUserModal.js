@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap';
+import axios from 'axios';
 
 function AddUserModal(props) {
   const [input, setInput] = useState('');
@@ -16,6 +17,12 @@ function AddUserModal(props) {
         }
       }
       if (!userExists) {
+        axios
+          .post('/api/adduser', {
+            email: 'test@test.com',
+            newUser: input,
+          })
+          .catch((err) => console.log(err));
         console.log(input + ' Added!');
         var user = {
           username: input,
