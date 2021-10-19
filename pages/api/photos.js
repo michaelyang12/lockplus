@@ -14,7 +14,7 @@ const photoUploadApi = nextConnect({
   },
 });
 
-const uploadMiddleware = upload.single('file');
+const uploadMiddleware = upload.array('theFiles');
 photoUploadApi.use(uploadMiddleware);
 
 // Process a POST request, api stuff goes here
