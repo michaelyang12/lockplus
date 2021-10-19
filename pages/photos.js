@@ -1,5 +1,5 @@
 import HomeSidebar from '../components/HomeSidebar';
-import PhotosForm from '../components/PhotosForm';
+import { PhotosForm } from '../components/PhotosForm';
 import { useState } from 'react';
 
 function Photos(props) {

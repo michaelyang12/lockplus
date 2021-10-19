@@ -32,7 +32,6 @@ export interface IProps {
    */
   uploadFileName: string;
 }
-
 export const AddPhotoButton: React.FC<IProps> = (props) => {
   const fileInputRef = React.useRef<HTMLInputElement | null>(null);
   const formRef = React.useRef<HTMLFormElement | null>(null);

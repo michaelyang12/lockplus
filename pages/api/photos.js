@@ -1,4 +1,5 @@
-import nextConnect from 'next-connect';
+import nc from 'next-connect';
+import multer from 'multer';
 
 const upload = multer({
   storage: multer.diskStorage({
@@ -7,7 +8,7 @@ const upload = multer({
   }),
 });
 
-const photoUploadApi = nextConnect({
+const photoUploadApi = nc({
   // Handle any other HTTP method
   onNoMatch(req, res) {
     res.status(405).json({ error: `Method '${req.method}' Not Allowed` });
