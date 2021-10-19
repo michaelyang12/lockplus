@@ -1,6 +1,12 @@
 import NextAuth from 'next-auth';
 import EmailProvider from 'next-auth/providers/email';
+import { MongoDBAdapter } from '@next-auth/mongodb-adapter';
+import clientPromise from '../../../lib/mongodb';
+//import { MongoClient, ObjectId } from 'mongodb';
+import connectDB from '../../../util/database';
 
+//const client = new MongoClient(process.env.MONGODB_URI);
+//const client = () => clientPromise.db('lock');
 export default NextAuth({
   providers: [
     EmailProvider({
@@ -16,6 +22,7 @@ export default NextAuth({
       maxAge: 60 * 5, //5 minutes
     }),
   ],
+  adapter: MongoDBAdapter({ db: connectDB() }),
   secret: process.env.AUTH_SECRET,
   debug: true,
 });

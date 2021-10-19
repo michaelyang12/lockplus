@@ -11,17 +11,12 @@ const lockSchema = new Schema({
   parent_email: {
     type: String,
     required: true,
-    unique: true,
+    //unique: true,
   },
   children_emails: {
     type: [String],
     required: true,
     default: [],
-  },
-  ownerName: {
-    type: String,
-    required: true,
-    default: '',
   },
   settings: {
     type: [String],

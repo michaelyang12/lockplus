@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { signIn } from 'next-auth/react';
 import axios from 'axios';
 
 export default function RegisterForm() {
@@ -9,7 +10,20 @@ export default function RegisterForm() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    axios.post(/api/);
+    console.log('click');
+    const url = 'http://localhost:3000/home';
+    axios
+      .post('http://localhost:3000/api/lock', {
+        lockCode: lockCode,
+        email: email,
+      })
+      .catch((err) => console.log(err))
+      .then((response) => {
+        console.log(response);
+        signIn('email', {
+          email: email,
+        });
+      });
   }
 
   return (

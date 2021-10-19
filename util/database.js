@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.MONGO_URI;
+//const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI =
+  'mongodb+srv://lockAdmin:lock2021@lock.6q6fl.mongodb.net/lock?retryWrites=true&w=majority';
 
 let cached = global.mongoose;
 
@@ -17,8 +19,8 @@ async function connectDB() {
     const opts = {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      bufferCommands: false,
-      useCreateIndex: true,
+      //bufferCommands: false,
+      //useCreateIndex: true,
     };
 
     cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {

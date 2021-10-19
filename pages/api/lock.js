@@ -1,5 +1,5 @@
-import connectDB from '../../../util/database';
-require('../../../models/Lock');
+import connectDB from '../../util/database';
+require('../../models/Lock');
 import mongoose from 'mongoose';
 const Lock = mongoose.model('Lock');
 
@@ -9,17 +9,24 @@ export default async (req, res) => {
   console.log('in validate');
   if (method === 'POST') {
     try {
+      const LC = req.body.lockCode;
+      const PE = req.body.email;
       const data = {
-        lockCode: req.body.lockCode,
-        parent_email: req.body.email,
+        lockCode: LC,
+        parent_email: PE,
       };
-      await Lock.create(data);
+      console.log(data);
+      const newlock = new Lock(data);
+      newlock.save();
+      console.log('newlock');
+      console.log(newlock);
       res.status(201).json({
         success: true,
         message: 'lock created',
         statusText: 'not validated',
       });
     } catch (error) {
+      console.log('error here');
       res.status(400).json({
         success: false,
         message: error.message,
