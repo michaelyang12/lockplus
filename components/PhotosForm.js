@@ -1,5 +1,6 @@
 import React from 'react';
-import AddPhotoButton from './photos_page/AddPhotoButton';
+//import AddPhotoButton from './photos_page/AddPhotoButton';
+//import AddPhotoButton from './photos_page/AddPhotoButton';
 import axios from 'axios';
 
 export const PhotosForm = (props) => {
