@@ -1,28 +1,47 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import HomeSidebar from './HomeSidebar';
-import UsersFormSidebar from './user_sidebar/UsersFormSidebar';
-import UserComponent from './user_sidebar/UserComponent';
+import UsersFormSidebar from './user_page/user_sidebar/UsersFormSidebar';
+import UserComponent from './user_page/user_sidebar/UserComponent';
+import AddUserButton from './user_page/user_sidebar/AddUserButton';
+import AddUserModal from './user_page/AddUserModal';
+import { Button, Modal, ModalBody, ModalHeader, ModalFooter } from "reactstrap";
 
 function UsersForm() {
+  var usersDisplay = [];
   var users = [];
-  var userFunc = [];
+  var userCount = 5;
+  const router = useRouter();
 
-  for (var i = 0; i < 4/*this.props.userCount*/; i++) {
-    const foo = () => console.log("user" + i + " clicked");
-    userFunc.push(foo)
-    users.push(
+  for (var i = 0; i < userCount; i++) {
+    const num = i;
+    var user = {
+      "username": "user " + (i + 1),
+      "function":() => console.log("user " + (num + 1) + " clicked"),
+    }
+    users.push(user)
+    usersDisplay.push(
       <div key={i}>
-        <UserComponent clickAction={userFunc[i]} username={"user" + i} />
+        <UserComponent clickAction={user.function} username={user.username} user={user} />
       </div>);
   }
-  
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const toggle = () => {
+      setIsModalOpen(!isModalOpen);
+  }
+
   return (
-      <div class= "relative flex container box-border h-screen w-screen text-lockplus-blue">
-        <UsersFormSidebar>
-          {users}
-        </UsersFormSidebar>
-      </div>
+      <>
+        <div class="relative flex h-screen w-screen text-lockplus-blue justify-start">
+          <UsersFormSidebar>
+            {usersDisplay}
+            <AddUserButton clickAction={toggle}/>
+          </UsersFormSidebar>
+        </div>
+        <div>
+          <AddUserModal open={isModalOpen} toggleFunc={toggle} usersArray={users}/>
+        </div>
+      </>
     );
 }
 
