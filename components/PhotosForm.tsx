@@ -20,10 +20,15 @@ export const PhotosForm = (props) => {
   };
 
   return (
-    <AddPhotoButton
-      label="Upload Files"
-      uploadFileName="theFiles"
-      onChange={onChange}
-    />
+    <>
+      <div className="relative flex container box-border h-screen w-screen p-4 border-4 visible text-lockplus-blue">
+        PHOTOS
+      </div>
+      <AddPhotoButton
+        label="Upload Photos"
+        uploadFileName="theFiles"
+        onChange={onChange}
+      />
+    </>
   );
 };
