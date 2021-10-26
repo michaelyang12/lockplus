@@ -10,23 +10,25 @@ export default async (req, res) => {
   if (method === 'POST') {
     try {
       const email = req.body.email;
-      console.log(data);
+      //console.log(data);
       const newlock =
-        Lock.find({ parent_email: email }) ||
-        Lock.find({ children_emails: email });
+        (await Lock.findOne({ parent_email: email })) ||
+        (await Lock.findOne({ children_emails: email }));
       //newlock.save();
       console.log('newlock');
       console.log(newlock);
       if (newlock) {
+        console.log('lock exists');
         res.status(201).json({
           success: true,
           message: 'lock created',
           statusText: 'not validated',
         });
       } else {
+        console.log('lock dne');
         res.status(400).json({
           success: false,
-          message: error.message,
+          message: 'hi lock dne',
           statusText: 'error in validation',
         });
       }

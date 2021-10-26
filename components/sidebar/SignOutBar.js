@@ -6,7 +6,7 @@ function SignOutBar() {
     <button
       class="text-white flex items-center space-x-2 px-4 ml-1 hover:text-lockplus-hoverGray"
       onClick={() => signOut({ callbackUrl: url })}>
-      <span class="text-lg font-bold font-lockplus">Sign Out</span>
+      <span class="text-lg font-bold font-lockplus">sign out</span>
     </button>
   );
 }
