@@ -20,10 +20,11 @@ export default function RegisterForm() {
       .catch((err) => console.log(err))
       .then((response) => {
         console.log(response);
-        /* signIn('email', {
+        signIn('email', {
           email: email,
-        });*/
-        router.push('/home');
+          callbackUrl: url,
+        });
+        //router.push('/home');
       });
   }
 
