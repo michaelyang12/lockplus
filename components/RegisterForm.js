@@ -13,7 +13,7 @@ export default function RegisterForm() {
     console.log('click');
     const url = 'http://localhost:3000/home';
     axios
-      .post('http://localhost:3000/api/lock', {
+      .post('http://localhost:3000/api/registerlock', {
         lockCode: lockCode,
         email: email,
       })

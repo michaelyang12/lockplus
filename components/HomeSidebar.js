@@ -5,6 +5,7 @@ import SettingsBar from './sidebar/SettingsBar';
 import UsersBar from './sidebar/UsersBar';
 import HistoryBar from './sidebar/HistoryBar';
 import AddPhotosBar from './sidebar/AddPhotosBar';
+import SignOutBar from './sidebar/SignOutBar';
 
 function HomeSidebar(props) {
   const router = useRouter();
@@ -35,6 +36,7 @@ function HomeSidebar(props) {
       <HistoryBar />
       <SettingsBar />
       <AddPhotosBar />
+      <SignOutBar />
     </div>
   );
 }
