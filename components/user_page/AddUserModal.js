@@ -1,11 +1,18 @@
 import { useState, useEffect } from 'react';
 import { Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap';
+import { useSession } from 'next-auth/react';
 import axios from 'axios';
 
 function AddUserModal(props) {
   const [input, setInput] = useState('');
   const [userExists, setDoesUserExist] = useState(false);
-
+  const { data: session, status } = useSession();
+  //console.log('session');
+  //console.log(session);
+  const [sessionEmail, setSessionEmail] = useState('null');
+  if (session && sessionEmail === 'null') {
+    setSessionEmail(session.user.email);
+  }
   const addUser = () => {
     if (input.length > 0) {
       for (var i = 0; i < props.usersList.length; i++) {
@@ -19,15 +26,18 @@ function AddUserModal(props) {
       if (!userExists) {
         axios
           .post('/api/adduser', {
-            email: 'test@test.com',
-            newUser: input,
+            //email: 'test@test.com',
+            //newUser: input,
+            email: input,
+            sessionEmail: sessionEmail,
           })
           .catch((err) => console.log(err));
         console.log(input + ' Added!');
-        var user = {
+        /*var user = {
           username: input,
           function: () => console.log(input + ' clicked!'),
-        };
+        };*/
+        var user = input;
         props.usersList.push(user);
         props.toggleFunc();
       } else {
@@ -53,7 +63,7 @@ function AddUserModal(props) {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               className="h-8 w-48 bg-lockplus-opacGray bg-opacity-50 ml-12 mt-4 focus: outline-none border-2 border-lockplus-blue rounded-xl pl-4 placeholder-lockplus-placeholderGray font-light font-lockplus text-lockplus-placeholderGray"
-              placeholder="Name of User"
+              placeholder="user email"
             />
           </div>
         </ModalBody>

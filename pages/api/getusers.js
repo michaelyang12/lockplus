@@ -5,23 +5,37 @@ const Lock = mongoose.model('Lock');
 
 export default async (req, res) => {
   const { method } = req;
+  console.log('req');
+  console.log(req);
   await connectDB(); //async connect to the database
-  console.log('in validate');
+  console.log('in getusers');
   if (method === 'POST') {
     try {
       //const LC = req.body.lockCode;
-      const PE = req.body.email;
+      console.log('marker1');
+      const sEmail = req.body.email;
       const data = {
-        parent_email: PE,
+        parent_email: sEmail,
       };
-      const lock = await Lock.findOne(data);
+      console.log('data');
+      console.log(data);
+      const lock =
+        (await Lock.findOne({ parent_email: sEmail })) ||
+        (await Lock.findOne({ children_emails: sEmail }));
+      console.log('lock');
       console.log(lock);
+      //const users = lock.children_emails.unshift(lock.parent_email);
+      let users = [lock.parent_email];
+      lock.children_emails.forEach((email) => {
+        users.push(email);
+      });
       res.status(201).json({
         success: true,
         message: 'lock updated',
         statusText: 'user added',
         root_user: lock.parent_email,
         children_users: lock.children_emails,
+        users: users,
       });
     } catch (error) {
       console.log('error here');

@@ -4,9 +4,10 @@ import UsersForm from '../components/UsersForm';
 import { useState } from 'react';
 import AddUserModal from '../components/user_page/AddUserModal';
 import axios from 'axios';
+import { getSession } from 'next-auth/react';
 
 function UsersPage(props) {
-  const usersList = [];
+  const usersList = props.userList;
   console.log(usersList);
 
   return (
@@ -27,29 +28,30 @@ function UsersPage(props) {
 
 export default UsersPage;
 
-/*export async function getServerSideProps(context) {
-  //const [session] = getSession();
-  //const param = session.data.email;
-  let parent;
-  let children;
-  let users;
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+  let param = 'nulled';
+  if (session) {
+    param = session.user.email;
+  }
+  console.log('param' + param);
+  let users = [];
   await axios
-    .post('/api/getusers', { email: 'test@test.com' })
+    .post('http://localhost:3000/api/getusers', { email: param })
     .catch((err) => {
-      console.log(err);
+      console.log('err getusers from client');
+      console.log(err.message);
     })
     .then((response) => {
-      console.log('response');
-      //console.log(response.data);
-      parent = response.root_user;
-      children = response.children_users;
-      users = children.unshift(parent);
-      //console.log(response);
-      //console.log(users);
+      if (response) {
+        users = response.data.users;
+        console.log('success');
+        console.log(users);
+      }
     });
   return {
     props: {
       userList: users,
     },
   };
-} */
+}
