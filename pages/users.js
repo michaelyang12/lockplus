@@ -1,7 +1,7 @@
 import HomeSidebar from '../components/HomeSidebar';
 import LoginForm from '../components/LoginForm';
 import UsersForm from '../components/UsersForm';
-import { useState } from 'react';
+import React, { Component, useState } from 'react';
 import AddUserModal from '../components/user_page/AddUserModal';
 import axios from 'axios';
 import { getSession } from 'next-auth/react';
@@ -9,6 +9,7 @@ import { getSession } from 'next-auth/react';
 function UsersPage(props) {
   const usersList = props.userList;
   console.log(usersList);
+
 
   return (
     <>

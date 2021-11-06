@@ -35,7 +35,7 @@ function HomeSidebar(props) {
       <UsersBar />
       <HistoryBar />
       <SettingsBar />
-      <AddPhotosBar />
+      {/* <AddPhotosBar /> */}
       <SignOutBar />
     </div>
   );
