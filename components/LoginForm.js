@@ -7,7 +7,7 @@ export default function LoginForm() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [signInError, setSignInError] = useState('');
-  const falseVar = false;
+  //const falseVar = false;
   function handleSubmit(e) {
     e.preventDefault();
     const url = 'http://localhost:3000/home';
