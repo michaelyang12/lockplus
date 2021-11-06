@@ -2,13 +2,20 @@ import Head from 'next/head';
 import Image from 'next/image';
 import HomeSidebar from '../components/HomeSidebar';
 import LoginForm from '../components/LoginForm';
-import { useSession } from 'next-auth/react';
+import { SessionProvider, useSession } from 'next-auth/react';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
+import HomeForm from '../components/HomeForm';
 
 export default function HomePage() {
   const router = useRouter();
   const { data: session, status } = useSession();
   const loading = status === 'loading';
+
+  const [sessionEmail, setSessionEmail] = useState('null');
+  if (session && sessionEmail === 'null') {
+    setSessionEmail(session.user.email);
+  }
   if (session) {
     return (
       <div class="h-screen w-screen bg-lockplus-opacGray">
@@ -16,8 +23,8 @@ export default function HomePage() {
           <div>
             <HomeSidebar />
           </div>
-          <div class="relative flex container h-screen w-screen p-4 bg-gray-800 visible text-lockplus-blue">
-            HOME
+          <div>
+            <HomeForm user = {sessionEmail}/>
           </div>
         </div>
       </div>
