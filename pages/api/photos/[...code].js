@@ -7,8 +7,9 @@ import fs from 'fs-extra';
 const upload = multer({
   storage: multer.diskStorage({
     destination: (req, file, cb) => {
-      const code = req.query.code;
-      const path = './photos/' + code;
+      const { code } = req.query;
+      const path = './photos/' + code.join('/');
+      //const path = './photos';
       fs.mkdirsSync(path);
       cb(null, path);
     },
@@ -29,7 +30,7 @@ photoUploadApi.use(uploadMiddleware);
 // Process a POST request, api stuff goes here
 photoUploadApi.post((req, res) => {
   console.log('upload api, req');
-  console.log(req.query.code);
+  console.log(req.query);
   res.status(200).json({ data: 'success' });
 });
 

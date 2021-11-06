@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { AddPhotoButton } from './photos_page/AddPhotoButton';
 import { useSession } from 'next-auth/react';
+import sanitize from '../util/sanitize';
+import slugify from 'slugify';
 import axios from 'axios';
 
 /*
@@ -14,6 +16,11 @@ interface Response {
 
 export const PhotosForm = (props) => {
   const { data: session, status } = useSession();
+  const safeUser: string = slugify(props.user, {
+    remove: /"<>#%\{\}\|\\\^~\[\]`;\?:@=&/g,
+  });
+  console.log('user');
+  console.log(safeUser);
   //console.log('session');
   //console.log(session);
   //const data = { formData };
@@ -55,10 +62,10 @@ export const PhotosForm = (props) => {
     console.log('code');
     const code: string = codeResponse.data.code;
     console.log(code);
-    const apiUrl: string = '/api/photos/' + code;
+    const apiUrl: string = '/api/photos/' + code + '/' + safeUser;
     const response = await axios.post(apiUrl, formData, config);
 
-    console.log('response', response.data);
+    //console.log('response', response.data);
   };
 
   return (
