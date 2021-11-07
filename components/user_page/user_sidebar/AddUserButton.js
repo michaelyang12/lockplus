@@ -6,7 +6,7 @@ function AddUserButton(props) {
         type="button"
         onClick={props.clickAction}
       >
-        <span href="#" class="hover:text-lockplus-hoverGray text-white flex items-center space-x-2 px-4">
+        <span href="#" class="hover:text-lockplus-hoverGray text-white -ml-4 flex items-center space-x-2 px-4">
           <AddUserIcon/>
           <span class="text-xs font-lockplus">Add User</span>
         </span>
