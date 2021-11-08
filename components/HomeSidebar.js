@@ -12,8 +12,8 @@ function HomeSidebar(props) {
   const [isUserPageSelected, setIsUserPageSelected] = useState(false);
 
   return (
-    <div class="sidebar bg-lockplus-blue text-blue-100 w-40 h-screen space-y-6 py-7 px-2 relative">
-      <a
+    <div class="relative sidebar bg-lockplus-blue text-blue-100 w-40 h-screen space-y-6 py-7 px-2">
+      <span
         href="#"
         class="text-white flex items-center space-x-2 px-4 mb-12"
         onClick={() => router.push('/home')}>
@@ -31,10 +31,10 @@ function HomeSidebar(props) {
           />
         </svg>
         <span class="text-2xl font-bold font-lockplus">lock +</span>
-      </a>
+      </span>
       <UsersBar />
-      <HistoryBar />
-      <SettingsBar />
+      {/* <HistoryBar />
+      <SettingsBar /> */}
       {/* <AddPhotosBar /> */}
       <SignOutBar />
     </div>

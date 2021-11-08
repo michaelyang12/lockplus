@@ -30,6 +30,11 @@ export default function RegisterForm() {
       });
   }
 
+  function whatsThis()
+  {
+    alert("A lock code is a unique identifier assigned to a lock.")
+  }
+
   return (
     <div className="w-2/3 h-96 mx-auto mt-162">
       <div className="flex justify-center block w-auto h-48 mt-24 m-4 ">
@@ -51,7 +56,10 @@ export default function RegisterForm() {
             required
           />
           <div className="text-xs font-regular font-lockplus text-right text-lockplus-blue pr-4 ml-12">
+            <button
+            onClick={whatsThis}>
             what's this?
+            </button>
           </div>
           <input
             type="text"

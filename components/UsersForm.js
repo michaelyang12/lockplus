@@ -7,6 +7,7 @@ import AddUserModal from './user_page/AddUserModal';
 import { PhotosForm } from './PhotosForm';
 import SingleUserPage from './user_page/SingleUserPage';
 import { Button, Modal, ModalBody, ModalHeader, ModalFooter } from "reactstrap";
+import DeleteUserButton from './user_page/user_sidebar/DeleteUserButton';
 
 function UsersForm(props) {
   var usersDisplay = [];
@@ -28,6 +29,7 @@ function UsersForm(props) {
         <UserComponent 
           clickAction={currentUser.function} 
           user={currentUser} 
+          userList={props.userlist}
           selectedUser={selectedUser} 
           setSelectedUser={setSelectedUser}
         />
@@ -51,7 +53,6 @@ function UsersForm(props) {
       </div>
       <div>
         <SingleUserPage user={selectedUser}/>
-        {/* <PhotosForm /> */}
       </div>
       <div>
         <AddUserModal
