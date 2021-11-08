@@ -5,8 +5,8 @@ const Lock = mongoose.model('Lock');
 
 export default async (req, res) => {
   const { method } = req;
-  console.log('req');
-  console.log(req);
+  //console.log('req');
+  //console.log(req);
   await connectDB(); //async connect to the database
   console.log('in getusers');
   if (method === 'POST') {

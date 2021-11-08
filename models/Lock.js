@@ -7,8 +7,11 @@ const imageSchema = new Schema({
     type: String,
   },
   img: {
-    type: Buffer,
+    data: Buffer,
     contentType: String,
+  },
+  filename: {
+    type: String,
   },
 });
 

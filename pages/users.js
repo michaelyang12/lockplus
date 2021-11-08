@@ -8,8 +8,8 @@ import { getSession } from 'next-auth/react';
 
 function UsersPage(props) {
   const usersList = props.userList;
+  const email = props.sessionEmail;
   console.log(usersList);
-
 
   return (
     <>
@@ -19,7 +19,7 @@ function UsersPage(props) {
             <HomeSidebar />
           </div>
           <div>
-            <UsersForm userlist={usersList} />
+            <UsersForm userlist={usersList} sessionEmail={email} />
           </div>
         </div>
       </div>
@@ -53,6 +53,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       userList: users,
+      sessionEmail: param,
     },
   };
 }
