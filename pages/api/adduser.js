@@ -11,7 +11,7 @@ export default async (req, res) => {
     try {
       //const LC = req.body.lockCode;
       const PE = req.body.sessionEmail;
-      const NU = req.body.email;
+      const NU = req.body.user;
       const data = {
         parent_email: PE,
       };
@@ -23,7 +23,7 @@ export default async (req, res) => {
       if (lockToModify) {
         console.log('modify found');
         console.log(lockToModify);
-        lockToModify.children_emails.push(NU);
+        lockToModify.users.push(NU);
         lockToModify.save();
         console.log('newlock');
         console.log(lockToModify);

@@ -12,10 +12,11 @@ export default async (req, res) => {
       console.log('pre email');
       const email = req.body.email;
       console.log('post email');
+      const data = {
+        account_email: email,
+      };
       //console.log(data);
-      const lock =
-        (await Lock.findOne({ parent_email: email })) ||
-        (await Lock.findOne({ children_emails: email }));
+      const lock = await Lock.findOne(data);
       console.log('newlock');
       console.log(lock);
       res.status(201).json({

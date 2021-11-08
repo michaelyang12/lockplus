@@ -1,14 +1,18 @@
 import nc from 'next-connect';
 import multer from 'multer';
 import fs from 'fs-extra';
+import connectDB from '../../../util/database';
+require('../../../models/Lock');
+import mongoose from 'mongoose';
+const Lock = mongoose.model('Lock');
 
 //need to receieve and process more JSON data to dynamically allocate folders to different locks, different users w/in each lock
 
 const upload = multer({
   storage: multer.diskStorage({
     destination: (req, file, cb) => {
-      const { code } = req.query;
-      const path = './photos/' + code.join('/');
+      const user = req.query;
+      const path = './photos/' + user;
       fs.mkdirsSync(path);
       cb(null, path);
     },
@@ -28,9 +32,10 @@ photoUploadApi.use(uploadMiddleware);
 
 // Process a POST request, api stuff goes here
 photoUploadApi.post((req, res) => {
-  console.log('upload api, req');
-  console.log(req.query);
-  res.status(200).json({ data: 'success' });
+    console.log('upload api, req');
+    console.log(req.query);
+    await connectDB();
+    res.status(200).json({ data: 'success' });
 });
 
 export default photoUploadApi;

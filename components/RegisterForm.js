@@ -7,6 +7,7 @@ export default function RegisterForm() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [lockCode, setLockCode] = useState('');
+  const [name, setName] = useState('');
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -16,6 +17,7 @@ export default function RegisterForm() {
       .post('http://localhost:3000/api/registerlock', {
         lockCode: lockCode,
         email: email,
+        name: name,
       })
       .catch((err) => console.log(err))
       .then((response) => {
@@ -46,6 +48,7 @@ export default function RegisterForm() {
             placeholder="lock code"
             value={lockCode}
             onChange={(e) => setLockCode(e.target.value)}
+            required
           />
           <div className="text-xs font-regular font-lockplus text-right text-lockplus-blue pr-4 ml-12">
             what's this?
@@ -56,17 +59,17 @@ export default function RegisterForm() {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-          />
-          {/*<input
-            type="text"
-            className="h-8 w-48 bg-lockplus-opacGray bg-opacity-50 ml-12 mt-0 focus: outline-none border-2 border-lockplus-blue rounded-xl pl-4 placeholder-lockplus-placeholderGray font-light font-lockplus text-lockplus-placeholderGray"
-            placeholder="Password"
+            required
           />
           <input
             type="text"
-            className="h-8 w-48 bg-lockplus-opacGray bg-opacity-50 ml-12 mt-3 focus: outline-none border-2 border-lockplus-blue rounded-xl pl-4 placeholder-lockplus-placeholderGray font-light font-lockplus text-lockplus-placeholderGray"
-            placeholder="Confirm password"
-          />*/}
+            className="h-8 w-48 bg-lockplus-opacGray bg-opacity-50 ml-12 mt-0 focus: outline-none border-2 border-lockplus-blue rounded-xl pl-4 placeholder-lockplus-placeholderGray font-light font-lockplus text-lockplus-placeholderGray"
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+
           <button
             className="bg-lockplus-blue group h-6 w-24 relative top-2 left-24 rounded-full focus:outline-none transform hover:scale-105 hover:bg-lockplus-hoverblue transition ease-out duration-100 mt-1.5"
             onClick={handleSubmit}>

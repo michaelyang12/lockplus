@@ -16,7 +16,7 @@ export default function HomePage() {
   if (session && sessionEmail === 'null') {
     setSessionEmail(session.user.email);
   }
-  if (session) {
+  if (session && !loading) {
     return (
       <div class="h-screen w-screen bg-lockplus-opacGray">
         <div class="relative flex bg-gray-800 justify-start">
@@ -24,11 +24,13 @@ export default function HomePage() {
             <HomeSidebar />
           </div>
           <div>
-            <HomeForm user = {sessionEmail}/>
+            <HomeForm user={sessionEmail} />
           </div>
         </div>
       </div>
     );
+  } else if (loading) {
+    return <div className="-screen w-screen bg-black"></div>;
   } else {
     return (
       <div className="h-screen w-screen bg-black text-white">LOCKED OUT</div>

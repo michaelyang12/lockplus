@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { AddPhotoButton } from './photos_page/AddPhotoButton';
 import { useSession } from 'next-auth/react';
-import sanitize from '../util/sanitize';
 import slugify from 'slugify';
 import axios from 'axios';
 

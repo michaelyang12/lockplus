@@ -9,11 +9,9 @@ export default async (req, res) => {
   console.log('in validate');
   if (method === 'POST') {
     try {
-      const LC = req.body.lockCode;
-      const PE = req.body.email;
       const data = {
-        lockCode: LC,
-        parent_email: PE,
+        lockCode: req.body.lockCode,
+        account_email: req.body.email,
       };
       console.log(data);
       const newlock = new Lock(data);

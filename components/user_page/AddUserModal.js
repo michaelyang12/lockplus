@@ -28,7 +28,7 @@ function AddUserModal(props) {
           .post('/api/adduser', {
             //email: 'test@test.com',
             //newUser: input,
-            email: input,
+            user: input,
             sessionEmail: sessionEmail,
           })
           .catch((err) => console.log(err));
@@ -39,7 +39,7 @@ function AddUserModal(props) {
         };*/
         var user = input;
         props.usersList.push(user);
-        setInput("");
+        setInput('');
         props.toggleFunc();
       } else {
         alert('User/Name already exists!');
@@ -48,9 +48,9 @@ function AddUserModal(props) {
   };
 
   const cancel = () => {
-      setInput("");
-      props.toggleFunc();
-  }
+    setInput('');
+    props.toggleFunc();
+  };
 
   return (
     <Modal

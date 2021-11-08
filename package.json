@@ -8,7 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@next-auth/mongodb-adapter": "^0.0.2-next.285",
+    "@next-auth/mongodb-adapter": "0.0.2-next.285",
     "@types/next": "^9.0.0",
     "@types/react": "^17.0.30",
     "axios": "^0.23.0",

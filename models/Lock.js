@@ -2,20 +2,34 @@ import mongoose from 'mongoose';
 const model_name = 'Lock';
 const { Schema } = mongoose;
 
+const imageSchema = new Schema({
+  username: {
+    type: String,
+  },
+  img: {
+    type: Buffer,
+    contentType: String,
+  },
+});
+
 const lockSchema = new Schema({
   lockCode: {
     type: String,
     required: true,
     unique: true,
   },
-  parent_email: {
+  account_email: {
     type: String,
     required: true,
     //unique: true,
   },
-  children_emails: {
+  users: {
     type: [String],
     required: true,
+    default: [],
+  },
+  images: {
+    type: [imageSchema],
     default: [],
   },
   settings: {

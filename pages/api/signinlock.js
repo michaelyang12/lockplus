@@ -11,9 +11,7 @@ export default async (req, res) => {
     try {
       const email = req.body.email;
       //console.log(data);
-      const newlock =
-        (await Lock.findOne({ parent_email: email })) ||
-        (await Lock.findOne({ children_emails: email }));
+      const newlock = await Lock.findOne({ account_email: email });
       //newlock.save();
       console.log('newlock');
       console.log(newlock);
