@@ -10,7 +10,6 @@ function UsersPage(props) {
   const usersList = props.userList;
   console.log(usersList);
 
-
   return (
     <>
       <div class="h-screen w-screen bg-lockplus-opacGray">

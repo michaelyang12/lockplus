@@ -12,28 +12,33 @@ import DeleteUserButton from './user_page/user_sidebar/DeleteUserButton';
 function UsersForm(props) {
   var usersDisplay = [];
   //var users = [];
-  var userCount = props.userlist.length;
+  const userList = props.userlist
+  const userCount = userList.length
   const router = useRouter();
+  const primaryUser = props.userlist[0] 
+    ? props.userlist[0]
+    : ""
 
   // const nullUser = {
   //   username: "No user selected",
   //   function: undefined,
   // };
 
-  const [selectedUser, setSelectedUser] = useState("");
+  const [selectedUser, setSelectedUser] = useState(primaryUser);
 
   for (var i = 0; i < userCount; i++) {
     var currentUser = props.userlist[i];
     usersDisplay.push(
       <div key={i}>
-        <UserComponent 
-          clickAction={currentUser.function} 
-          user={currentUser} 
+        <UserComponent
+          clickAction={currentUser.function}
+          user={currentUser}
           userList={props.userlist}
-          selectedUser={selectedUser} 
+          selectedUser={selectedUser}
           setSelectedUser={setSelectedUser}
         />
-      </div>);
+      </div>
+    );
   }
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -48,11 +53,14 @@ function UsersForm(props) {
           {usersDisplay.map((user) => (
             <div>{user}</div>
           ))}
+          <div/>
           <AddUserButton clickAction={toggle} />
         </UsersFormSidebar>
       </div>
       <div>
-        <SingleUserPage user={selectedUser}/>
+        <SingleUserPage 
+          user={selectedUser}
+        />
       </div>
       <div>
         <AddUserModal

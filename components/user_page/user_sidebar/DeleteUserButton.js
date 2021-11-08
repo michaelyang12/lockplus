@@ -21,7 +21,7 @@ function DeleteUserButton(props) {
     }
     
     return (
-        <button class="text-white hover:text-lockplus-hoverGray" onClick={click}>
+        <button class="text-red-500 hover:text-red-700" onClick={click}>
           <DeleteIcon/>
         </button>
     );
