@@ -13,7 +13,7 @@ export default async (req, res) => {
       const PE = req.body.sessionEmail;
       const NU = req.body.user;
       const data = {
-        parent_email: PE,
+        account_email: PE,
       };
       console.log('data');
       console.log(data);
