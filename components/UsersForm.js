@@ -42,13 +42,11 @@ function UsersForm(props) {
 
   const [selectedUser, setSelectedUser] = useState(primaryUser);
 
-
   for (var i = 0; i < userCount; i++) {
-    var currentUser = userList[i];
+    var currentUser = userList[i]
     usersDisplay.push(
       <div key={i}>
         <UserComponent
-          clickAction={currentUser.function}
           user={currentUser}
           userList={props.userlist}
           selectedUser={selectedUser}
@@ -84,6 +82,7 @@ function UsersForm(props) {
           open={isModalOpen}
           toggleFunc={toggle}
           usersList={props.userlist}
+          /*sessionEmail={props.sessionEmail}*/
         />
       </div>
     </div>

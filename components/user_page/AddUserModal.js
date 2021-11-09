@@ -25,7 +25,7 @@ function AddUserModal(props) {
         axios
           .post('/api/adduser', {
             user: input,
-            sessionEmail: sessionEmail,
+            email: sessionEmail,
           })
           .catch((err) => console.log(err));
         console.log(input + ' Added!');

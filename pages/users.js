@@ -19,7 +19,10 @@ function UsersPage(props) {
             <HomeSidebar />
           </div>
           <div>
-            <UsersForm userlist={usersList} sessionEmail={email} />
+            <UsersForm 
+              userlist={usersList} 
+              sessionEmail={email} 
+            />
           </div>
         </div>
       </div>
@@ -36,9 +39,11 @@ export async function getServerSideProps(context) {
     param = session.user.email;
   }
   console.log('param' + param);
-  let users = [];
+  var users = [];
   await axios
-    .post('http://localhost:3000/api/getusers', { email: param })
+    .post('http://localhost:3000/api/getusers', { 
+      email: param 
+    })
     .catch((err) => {
       console.log('err getusers from client');
       console.log(err.message);

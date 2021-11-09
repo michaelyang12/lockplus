@@ -2,7 +2,7 @@ import SingleUserIcon from '../../assets/icons/SingleUserIcon';
 import DeleteUserButton from './DeleteUserButton';
 
 function UserComponent(props) {
-  const user = props.user;
+  const user = props.user
   // const userList = props.userList
 
   const click = () => {

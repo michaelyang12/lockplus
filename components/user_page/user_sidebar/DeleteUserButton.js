@@ -1,23 +1,32 @@
 import { isPropertySignature } from "typescript";
 import DeleteIcon from "../../assets/icons/DeleteIcon";
 import { useState } from "react";
+import axios from "axios";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 function DeleteUserButton(props) {
+    const router = useRouter()
     const user = props.user
+    const { data: session, status } = useSession()
+    const [sessionEmail, setSessionEmail] = useState('null')
+
+    if (session && sessionEmail === 'null') {
+        setSessionEmail(session.user.email)
+    }
+
     const click = () => { 
-        // var index = 0
         const index = props.userList.indexOf(user)
-        props.userList.splice(index, 1)
-        for (var i = 0; i < props.userList.length; i++) {
-            console.log(props.userList[i])
-        }
-        console.log("iim mr meseeks")
-        // axios
-        //   .post('/api/adduser', {
-        //     email: input,
-        //     sessionEmail: sessionEmail,
-        //   })
-        //   .catch((err) => console.log(err));
+        axios
+         .post('/api/deleteuser', {
+            email: sessionEmail,
+            deleteIndex: index
+         })
+         .catch((err) => console.log(err))
+
+        console.log(user + ' removed!')
+        // props.userList.splice(index, 1)
+        router.replace('/users')
     }
     
     return (

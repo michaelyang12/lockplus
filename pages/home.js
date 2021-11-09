@@ -24,7 +24,7 @@ export default function HomePage() {
             <HomeSidebar />
           </div>
           <div>
-            <HomeForm user={sessionEmail} />
+            <HomeForm userEmail={sessionEmail} />
           </div>
         </div>
       </div>
