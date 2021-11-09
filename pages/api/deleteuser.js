@@ -11,7 +11,7 @@ export default async (req, res) => {
     try {
       const AE = req.body.email;
       const deleteIndex = req.body.deleteIndex;
-      console.log(deleteIndex)
+      console.log(deleteIndex);
       const data = {
         account_email: AE,
       };
@@ -51,4 +51,3 @@ export default async (req, res) => {
     res.status(400).json({ success: false, statusText: 'wrong axios method' });
   }
 };
-

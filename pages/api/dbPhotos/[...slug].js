@@ -60,13 +60,16 @@ photoUploadApi.post(async (req, res) => {
     //const imgBuffer = Buffer.from(base64, 'base64');
     //const imgBuffer = fs.readFileSync(req.files[0].path);
     const imgBuffer = req.files[0].buffer;
-    //const cType = req.files[0].mimetype;
+    const cType = req.files[0].mimetype;
+    const typeRegex = /image\//gm;
+    const fileExt = cType.replace(typeRegex, '.');
+    console.log(fileExt);
     const dateAppend = Date.now();
     console.log(imgBuffer);
     const newimg = {
       username: slug[1],
-      img: { data: imgBuffer, contentType: 'image/png' },
-      filename: slug[1] + dateAppend + '.png',
+      img: { data: imgBuffer, contentType: cType },
+      filename: slug[1] + dateAppend + fileExt,
     };
     console.log('newimg');
     console.log(newimg);

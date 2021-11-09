@@ -6,19 +6,17 @@ import AddUserButton from './user_page/user_sidebar/AddUserButton';
 import AddUserModal from './user_page/AddUserModal';
 import { PhotosForm } from './PhotosForm';
 import SingleUserPage from './user_page/SingleUserPage';
-import { Button, Modal, ModalBody, ModalHeader, ModalFooter } from "reactstrap";
+import { Button, Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap';
 import DeleteUserButton from './user_page/user_sidebar/DeleteUserButton';
 
 function UsersForm(props) {
   var usersDisplay = [];
   //var users = [];
-  const userList = props.userlist
-  const userCount = userList.length
+  const userList = props.userlist;
+  const userCount = userList.length;
   const router = useRouter();
-  const primaryUser = userList[0] 
-    ? userList[0]
-    : ""
-
+  const primaryUser = userList[0] ? userList[0] : '';
+  console.log(props.email);
   // const nullUser = {
   //   username: "No user selected",
   //   function: undefined,
@@ -43,7 +41,7 @@ function UsersForm(props) {
   const [selectedUser, setSelectedUser] = useState(primaryUser);
 
   for (var i = 0; i < userCount; i++) {
-    var currentUser = userList[i]
+    var currentUser = userList[i];
     usersDisplay.push(
       <div key={i}>
         <UserComponent
@@ -68,21 +66,19 @@ function UsersForm(props) {
           {usersDisplay.map((user) => (
             <div>{user}</div>
           ))}
-          <div/>
+          <div />
           <AddUserButton clickAction={toggle} />
         </UsersFormSidebar>
       </div>
       <div>
-        <SingleUserPage 
-          user={selectedUser}
-        />
+        <SingleUserPage user={selectedUser} />
       </div>
       <div>
         <AddUserModal
           open={isModalOpen}
           toggleFunc={toggle}
           usersList={props.userlist}
-          /*sessionEmail={props.sessionEmail}*/
+          sessionEmail={props.email}
         />
       </div>
     </div>
