@@ -11,7 +11,7 @@ function SingleUserPage(props) {
 
   // const [isUserSelected, setIsUserSelected] = useState(false)
   var isUserSelected = false
-  
+
   if (header == user) {
     isUserSelected = true
   } else {
@@ -28,14 +28,6 @@ function SingleUserPage(props) {
           <div className="text-2xl font-bold font-lockplus text-left pr-4 text-white">
             User: <span class="text-lockplus-blue inline-flex"> {header} </span>
           </div>
-          {/* <div className="text-md font-regular font-lockplus relative text-left mt-16 mr-12 inline-flex">
-            Upload photos for this user:
-            <div className="h-6 w-24 relative -mt-5">
-              <PhotosForm
-                user={props.user}
-              />
-            </div>
-          </div> */}
           <UploadPhotoPrompt 
             user={props.user}
             isUserSelected={isUserSelected}
