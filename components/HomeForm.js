@@ -1,5 +1,5 @@
 function HomeForm(props) {
-    let userEmail = props.user
+    const userEmail = props.userEmail
     return (
         <div class="relative container h-screen w-screen p-4 bg-gray-800 visible text-white">
             <div class="text-xl">

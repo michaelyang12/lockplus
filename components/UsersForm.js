@@ -6,15 +6,24 @@ import AddUserButton from './user_page/user_sidebar/AddUserButton';
 import AddUserModal from './user_page/AddUserModal';
 import { PhotosForm } from './PhotosForm';
 import SingleUserPage from './user_page/SingleUserPage';
-import { Button, Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalBody, ModalHeader, ModalFooter } from "reactstrap";
 import DeleteUserButton from './user_page/user_sidebar/DeleteUserButton';
-//import axios from 'axios';
-//import useSWR from 'swr';
 
 function UsersForm(props) {
   var usersDisplay = [];
-  var userCount = props.userlist.length;
+  //var users = [];
+  const userList = props.userlist
+  const userCount = userList.length
   const router = useRouter();
+  const primaryUser = userList[0] 
+    ? userList[0]
+    : ""
+
+  // const nullUser = {
+  //   username: "No user selected",
+  //   function: undefined,
+  // };
+
   /*console.log('hi');
   //const url = '/api/users/' + props.sessionEmail;
   const url = 'http://localhost:3000/api/getusers';
@@ -30,13 +39,14 @@ function UsersForm(props) {
   if (error) console.log('err in fetcher');
   if (!data) return <div className="bg-transparent"></div>;
   console.log(data); */
-  const [selectedUser, setSelectedUser] = useState('');
+
+  const [selectedUser, setSelectedUser] = useState(primaryUser);
+
   for (var i = 0; i < userCount; i++) {
-    var currentUser = props.userlist[i];
+    var currentUser = userList[i]
     usersDisplay.push(
       <div key={i}>
         <UserComponent
-          clickAction={currentUser.function}
           user={currentUser}
           userList={props.userlist}
           selectedUser={selectedUser}
@@ -58,17 +68,21 @@ function UsersForm(props) {
           {usersDisplay.map((user) => (
             <div>{user}</div>
           ))}
+          <div/>
           <AddUserButton clickAction={toggle} />
         </UsersFormSidebar>
       </div>
       <div>
-        <SingleUserPage user={selectedUser} />
+        <SingleUserPage 
+          user={selectedUser}
+        />
       </div>
       <div>
         <AddUserModal
           open={isModalOpen}
           toggleFunc={toggle}
           usersList={props.userlist}
+          /*sessionEmail={props.sessionEmail}*/
         />
       </div>
     </div>
