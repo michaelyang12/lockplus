@@ -30,5 +30,8 @@ export default async function (req, res) {
     }),
     secret: process.env.AUTH_SECRET,
     debug: true,
+    pages: {
+      verifyRequest: '/verifyrequest',
+    },
   });
 }
