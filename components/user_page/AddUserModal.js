@@ -7,8 +7,6 @@ function AddUserModal(props) {
   const [input, setInput] = useState('');
   const [userExists, setDoesUserExist] = useState(false);
   const { data: session, status } = useSession();
-  //console.log('session');
-  //console.log(session);
   const [sessionEmail, setSessionEmail] = useState('null');
   if (session && sessionEmail === 'null') {
     setSessionEmail(session.user.email);
@@ -26,17 +24,11 @@ function AddUserModal(props) {
       if (!userExists) {
         axios
           .post('/api/adduser', {
-            //email: 'test@test.com',
-            //newUser: input,
             user: input,
             sessionEmail: sessionEmail,
           })
           .catch((err) => console.log(err));
         console.log(input + ' Added!');
-        /*var user = {
-          username: input,
-          function: () => console.log(input + ' clicked!'),
-        };*/
         var user = input;
         props.usersList.push(user);
         setInput('');

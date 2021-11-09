@@ -61,7 +61,7 @@ export const PhotosForm = (props) => {
     console.log('code');
     const code: string = codeResponse.data.code;
     console.log(code);
-    const apiUrl: string = '/api/photos/' + code + '/' + safeUser;
+    const apiUrl: string = '/api/dbPhotos/' + code + '/' + safeUser;
     const response = await axios.post(apiUrl, formData, config);
 
     //console.log('response', response.data);

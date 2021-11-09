@@ -15,8 +15,8 @@ function UsersForm(props) {
   const userList = props.userlist
   const userCount = userList.length
   const router = useRouter();
-  const primaryUser = props.userlist[0] 
-    ? props.userlist[0]
+  const primaryUser = userList[0] 
+    ? userList[0]
     : ""
 
   // const nullUser = {
@@ -24,10 +24,27 @@ function UsersForm(props) {
   //   function: undefined,
   // };
 
+  /*console.log('hi');
+  //const url = '/api/users/' + props.sessionEmail;
+  const url = 'http://localhost:3000/api/getusers';
+  console.log(url);
+  const fetcher = () =>
+    axios
+      .post(url, { email: props.sessionEmail })
+      .catch((err) => console.log(err.message))
+      .then((res) => res.data.users);
+  const { data, error } = useSWR(url, fetcher, {
+    initialData: props.userlist,
+  });
+  if (error) console.log('err in fetcher');
+  if (!data) return <div className="bg-transparent"></div>;
+  console.log(data); */
+
   const [selectedUser, setSelectedUser] = useState(primaryUser);
 
+
   for (var i = 0; i < userCount; i++) {
-    var currentUser = props.userlist[i];
+    var currentUser = userList[i];
     usersDisplay.push(
       <div key={i}>
         <UserComponent
