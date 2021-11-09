@@ -48,7 +48,7 @@ export const PhotosForm = (props) => {
     const apiUrl: string = '/api/dbPhotos/' + code + '/' + safeUser;
     const response: any = await axios.post(apiUrl, formData, config);
     setUploadSuccess(response.data.message);
-    console.log('response', response.data);
+    //console.log('response', response.data);
   };
 
   return (
