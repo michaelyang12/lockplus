@@ -17,6 +17,7 @@ function DeleteUserButton(props) {
 
     const click = () => { 
         const index = props.userList.indexOf(user)
+        console.log(index)
         axios
          .post('/api/deleteuser', {
             email: sessionEmail,

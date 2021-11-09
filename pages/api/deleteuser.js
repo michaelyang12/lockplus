@@ -10,7 +10,8 @@ export default async (req, res) => {
   if (method === 'POST') {
     try {
       const AE = req.body.email;
-      const deleteIndex = req.body.index;
+      const deleteIndex = req.body.deleteIndex;
+      console.log(deleteIndex)
       const data = {
         account_email: AE,
       };
