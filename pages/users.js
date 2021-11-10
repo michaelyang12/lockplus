@@ -10,7 +10,7 @@ function UsersPage(props) {
   const usersList = props.userList;
   const email = props.sessionEmail;
   console.log(usersList);
-  //AMPLIFY edit this for redeploy
+  //AMPLIFY edit this for redeplo
   return (
     <>
       <div class="h-screen w-screen bg-lockplus-opacGray">
