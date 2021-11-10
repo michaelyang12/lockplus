@@ -9,7 +9,7 @@ function UploadPhotoPrompt(props) {
         : "invisible"
 
   return (
-    <div className={`text-md font-regular font-lockplus relative text-left mt-16 mr-12 inline-flex ${visibility}`} >
+    <div className={`text-md text-gray-700 font-regular font-lockplus relative text-left mt-16 mr-12 inline-flex ${visibility}`} >
         Upload photos for this user:
         <div className="h-6 w-24 relative -mt-5">
             <PhotosForm

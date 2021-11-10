@@ -22,10 +22,10 @@ function SingleUserPage(props) {
   // }
 
   return (
-    <div className="relative flex h-full w-full bg-gray-800 container text-white p-4">
+    <div className="relative flex h-full w-full bg-blue-100 container text-white p-4">
       <div className="block w-auto h-48 m-4">
         <div className="h-24 w-screen">
-          <div className="text-2xl font-bold font-lockplus text-left pr-4 text-white">
+          <div className="text-2xl font-bold font-lockplus text-left pr-4 text-gray-700">
             User: <span class="text-lockplus-blue inline-flex"> {header} </span>
           </div>
           <UploadPhotoPrompt 

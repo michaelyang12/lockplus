@@ -18,7 +18,7 @@ function SettingsBar(props) {
             <a href="#" class="text-white flex items-center space-x-2 px-4 ml-1 hover:text-lockplus-hoverGray"
                 onClick = {() => router.push('/settings')}>
                 <SettingsIcon/>
-                <span class="text-lg font-bold font-lockplus">
+                <span class="text-md font-md font-lockplus">
                     settings
                 </span>
             </a>
