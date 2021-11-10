@@ -3,6 +3,7 @@ import Head from 'next/head';
 //import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
+// import slugify from 'slugify';
 
 export default function Home() {
   const router = useRouter();
@@ -10,7 +11,11 @@ export default function Home() {
   const loading = status === 'loading';
   if (loading) {
     return <div className="h-screen w-screen bg-black"></div>;
-  } else if (session) {
+  }
+  // if (router.isFallback) {
+  //   return <div>Loading...</div>
+  // } 
+  else if (session) {
     router.push('/home');
   } else {
     return (

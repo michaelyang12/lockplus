@@ -13,9 +13,9 @@ interface Response {
 }
 */
 
-export const PhotosForm = (props) => {
+export const PhotosForm = (props: { user: string; }) => {
   const { data: session, status } = useSession();
-  const safeUser: string = slugify(props.user, {
+  const safeUser: string = slugify(props.user ?? "", {
     remove: /"<>#%\{\}\|\\\^~\[\]`;\?:@=&/g,
   });
   console.log('user');
@@ -25,10 +25,10 @@ export const PhotosForm = (props) => {
   if (session && sessionEmail === 'null') {
     setSessionEmail(session.user.email);
   }
-  const onChange = async (formData) => {
+  const onChange = async (formData: any) => {
     const config = {
       headers: { 'content-type': 'multipart/form-data' },
-      onUploadProgress: (event) => {
+      onUploadProgress: (event: { loaded: number; total: number; }) => {
         console.log(
           `Current progress:`,
           Math.round((event.loaded * 100) / event.total)
