@@ -20,9 +20,7 @@ export const PhotosForm = (props) => {
   });
   console.log('user');
   console.log(safeUser);
-  //console.log('session');
-  //console.log(session);
-  //const data = { formData };
+  const [uploadSuccess, setUploadSuccess] = useState('');
   const [sessionEmail, setSessionEmail] = useState('null');
   if (session && sessionEmail === 'null') {
     setSessionEmail(session.user.email);
@@ -37,10 +35,6 @@ export const PhotosForm = (props) => {
         );
       },
     };
-
-    //
-    //let resData: Response;
-    //let code: string;
     const codeResponse: any = await axios
       .post('/api/codefromemail', {
         email: sessionEmail,
@@ -48,35 +42,25 @@ export const PhotosForm = (props) => {
       .catch((err) => {
         console.log(err);
       });
-    /*try {
-      console.log('code');
-      code = codeResponse.data.code;
-      console.log(code);
-    } catch (e) {
-      console.log('code response err');
-      console.log(codeResponse);
-      console.log('err');
-      console.log(e);
-    }*/
     console.log('code');
     const code: string = codeResponse.data.code;
     console.log(code);
     const apiUrl: string = '/api/dbPhotos/' + code + '/' + safeUser;
-    const response = await axios.post(apiUrl, formData, config);
-
+    const response: any = await axios.post(apiUrl, formData, config);
+    setUploadSuccess(response.data.message);
     //console.log('response', response.data);
   };
 
   return (
     <>
-      {/* <div className="relative flex container h-screen w-screen p-4 visible text-lockplus-blue">
-        PHOTOS
-      </div> */}
       <AddPhotoButton
         label="Upload Photos"
         uploadFileName="theFiles"
         onChange={onChange}
       />
+      <div className="-ml-48 -pl-8 mt-16 h-12 whitespace-nowrap text-left text-lockplus-blue font-lockplus font-md text-md w-full overflow-visible">
+        {uploadSuccess}
+      </div>
     </>
   );
 };

@@ -75,7 +75,7 @@ photoUploadApi.post(async (req, res) => {
     console.log(newimg);
     lock.images.push(newimg);
     lock.save();
-    res.status(200).json({ data: 'success' });
+    res.status(200).json({ success: true, message: 'Photo Uploaded!' });
   } catch (error) {
     console.log('error here');
     res.status(400).json({
