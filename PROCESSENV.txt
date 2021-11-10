@@ -1,0 +1,17 @@
+set up a file called .env.local and place this into it:
+
+MONGODB_URI = mongodb+srv://lockAdmin:lock2021@lock.6q6fl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+
+AUTH_SECRET = dbe12a40dbd1303da573ab197b512fc7
+
+EMAIL_HOST = smtp.sendgrid.net
+
+EMAIL_PORT = 465
+
+EMAIL_USER = apikey
+
+EMAIL_PASS = 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
+
+EMAIL_FROM = justin_neff1201@comcast.net
+
+NEXTAUTH_URL = http://localhost:3000
