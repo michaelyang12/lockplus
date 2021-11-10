@@ -58,7 +58,7 @@ export const PhotosForm = (props) => {
         uploadFileName="theFiles"
         onChange={onChange}
       />
-      <div className="-ml-48 -pl-8 mt-16 h-12 whitespace-nowrap text-left text-lockplus-blue font-lockplus font-md text-md w-full overflow-visible">
+      <div className="-ml-48 -pl-8 mt-16 h-12 whitespace-nowrap text-left text-gray-700 font-lockplus font-md text-md w-full overflow-visible">
         {uploadSuccess}
       </div>
     </>
