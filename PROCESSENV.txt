@@ -1,7 +1,0 @@
-set up a file called .env.local and place this into it:
-
-MONGODB_URI = mongodb+srv://lockAdmin:lock2021@lock.6q6fl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
-
-AUTH_SECRET = dbe12a40dbd1303da573ab197b512fc7
-
-NEXTAUTH_URL = http://localhost:3000
