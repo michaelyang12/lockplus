@@ -9,6 +9,7 @@ import { getSession } from 'next-auth/react';
 function UsersPage(props) {
   const usersList = props.userList;
   const email = props.sessionEmail;
+  const images = props.userImages;
   console.log(usersList);
 
   return (
@@ -19,9 +20,10 @@ function UsersPage(props) {
             <HomeSidebar />
           </div>
           <div>
-            <UsersForm 
-              userlist={usersList} 
-              sessionEmail={email} 
+            <UsersForm
+              userlist={usersList}
+              sessionEmail={email}
+              userImages={images}
             />
           </div>
         </div>
@@ -41,8 +43,8 @@ export async function getServerSideProps(context) {
   console.log('param' + param);
   var users = [];
   await axios
-    .post('http://localhost:3000/api/getusers', { 
-      email: param 
+    .post('http://localhost:3000/api/getusers', {
+      email: param,
     })
     .catch((err) => {
       console.log('err getusers from client');
@@ -59,6 +61,7 @@ export async function getServerSideProps(context) {
     props: {
       userList: users,
       sessionEmail: param,
+      userImages: images,
     },
   };
 }
