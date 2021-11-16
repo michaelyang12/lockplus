@@ -1,12 +1,9 @@
 
 function UsersFormSidebar(props) {
     return (
-      <div class="sidebar space-y-4 py-4 px-4 bg-gray-700 text-blue-100 w-60 h-screen">
-        <span class="relative flex text-white items-center mt-4 space-x-2 px-4 text-lg font-light font-lockplus">
+      <div class="sidebar space-y-2 py-1 px-4 bg-blue-100 w-56 h-screen border border-blue-300 border-solid">
+        <span class="relative flex text-gray-700 items-center mt-8 mb-6 space-x-2 px-4 text-lg font-light font-lockplus">
           Users
-        </span>
-        <span class="relative flex items-center -mt-4 text-gray-500 font-light top-1 font-serif">
-        _____________________
         </span>
         {props.children}
       </div>

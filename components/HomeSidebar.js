@@ -33,8 +33,8 @@ function HomeSidebar(props) {
         <span class="text-2xl font-bold font-lockplus">lock +</span>
       </a>
       <UsersBar />
-      {/* <HistoryBar />
-      <SettingsBar /> */}
+      <HistoryBar />
+      <SettingsBar />
       {/* <AddPhotosBar /> */}
       <SignOutBar />
     </div>

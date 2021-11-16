@@ -59,9 +59,10 @@ export const AddPhotoButton: React.FC<IProps> = (props) => {
   return (
     <form ref={formRef}>
       <button
-        className="absolute left-4 top-4 h-8 w-32 bg-lockplus-blue focus:outline-none rounded-md transform hover:bg-lockplus-hoverblue text-white font-lockplus"
+        className="absolute left-4 top-4 h-8 w-28 text-gray-700 bg-blue-400 focus:outline-none rounded-md transform hover:bg-blue-500 text-sm font-lockplus"
         type="button"
-        onClick={onClickHandler}>
+        onClick={onClickHandler}
+      >
         {props.label}
       </button>
       <input

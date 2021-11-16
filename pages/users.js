@@ -11,7 +11,7 @@ function UsersPage(props) {
   const email = props.sessionEmail;
   const images = props.userImages;
   console.log(usersList);
-
+  //AMPLIFY edit this for redeplo
   return (
     <>
       <div class="h-screen w-screen bg-lockplus-opacGray">

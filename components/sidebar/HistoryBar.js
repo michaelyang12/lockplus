@@ -7,7 +7,7 @@ function HistoryBar(props) {
         <a href="#" class="text-white flex items-center space-x-2 px-4 ml-1 hover:text-lockplus-hoverGray"
           onClick = {() => router.push('/history')}>
           <HistoryIcon/>
-          <span class="text-lg font-bold font-lockplus">
+          <span class="text-md font-md font-lockplus">
               history
             </span>
         </a>
