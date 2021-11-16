@@ -41,7 +41,7 @@ export async function getServerSideProps(context) {
   console.log('param' + param);
   var users = [];
   await axios
-    .post('http://localhost:3000/api/getusers', { 
+    .post('https://amplified.df1q72ewcxxug.amplifyapp.com/api/getusers', { 
       email: param 
     })
     .catch((err) => {

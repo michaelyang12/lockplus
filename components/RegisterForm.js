@@ -12,9 +12,9 @@ export default function RegisterForm() {
   function handleSubmit(e) {
     e.preventDefault();
     console.log('click');
-    const url = 'http://localhost:3000/home';
+    const url = 'https://amplified.df1q72ewcxxug.amplifyapp.com/home';
     axios
-      .post('http://localhost:3000/api/registerlock', {
+      .post('https://amplified.df1q72ewcxxug.amplifyapp.com/api/registerlock', {
         lockCode: lockCode,
         email: email,
         name: name,
