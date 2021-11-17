@@ -34,6 +34,7 @@ export default async (req, res) => {
         //root_user: lock.parent_email,
         //children_users: lock.children_emails,
         users: lock.users,
+        images: lock.images,
       });
     } catch (error) {
       console.log('error here');
