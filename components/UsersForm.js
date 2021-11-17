@@ -41,7 +41,10 @@ function UsersForm(props) {
   const [selectedUser, setSelectedUser] = useState(primaryUser);
 
   for (var i = 0; i < userCount; i++) {
-    var currentUser = userList[i];
+    const currentUser = userList[i]
+    const isPrimaryUser = currentUser == primaryUser
+      ? true
+      : false
     usersDisplay.push(
       <div key={i}>
         <UserComponent
@@ -49,6 +52,7 @@ function UsersForm(props) {
           userList={props.userlist}
           selectedUser={selectedUser}
           setSelectedUser={setSelectedUser}
+          isPrimaryUser={isPrimaryUser}
         />
       </div>
     );
@@ -72,14 +76,15 @@ function UsersForm(props) {
       </div>
       <div>
         <SingleUserPage user={selectedUser} />
-      </div>
-      <div>
         <AddUserModal
           open={isModalOpen}
           toggleFunc={toggle}
           usersList={props.userlist}
           // sessionEmail={props.email}
         />
+      </div>
+      <div>
+        
       </div>
     </div>
   );

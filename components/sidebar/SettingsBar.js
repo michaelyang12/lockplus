@@ -13,10 +13,18 @@ function SettingsBar(props) {
         //     children,
         //     ...props
         // } = this.props;
+
+        
         const router = useRouter();
+        const selectedDisplay = props.selectedItem == "settings"
+        ? "font-bold"
+        : "font-regular"
         return (
-            <a href="#" class="text-white flex items-center space-x-2 px-4 ml-1 hover:text-lockplus-hoverGray"
-                onClick = {() => router.push('/settings')}>
+            <a 
+             href="#" 
+             class={`text-white ${selectedDisplay} flex items-center space-x-2 px-4 ml-1 hover:text-lockplus-hoverGray`}
+             onClick = {() => router.push('/settings')}
+            >
                 <SettingsIcon/>
                 <span class="text-md font-md font-lockplus">
                     settings

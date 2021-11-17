@@ -43,16 +43,16 @@ function AddUserModal(props) {
     setInput('');
     props.toggleFunc();
   };
-
+  // "relative flex h-screen w-screen bg-blue-100 container p-4"
   return (
     <Modal
       isOpen={props.open}
       toggle={props.toggleFunc}
-      modalClassName="relative h-screen w-screen bg-gray-800 text-white justify-items-center p-4">
+      modalClassName="relative h-screen w-screen p-4 bg-lockplus-backgroundBlue text-lockplus-textGray">
       <div>
         <ModalHeader toggle={props.toggleFunc}> </ModalHeader>
         <ModalBody>
-          <div className="relative text-xl font-bold font-lockplus mt-2 text-center text-lockplus-blue pr-4 ml-20 hover:text-lockplus-hoverblue">
+          <div className="relative text-xl font-bold font-lockplus mt-2 text-center pr-4 ml-20 hover:text-gray-900">
             Add a user
           </div>
           <div className="relative left-96">
@@ -60,19 +60,19 @@ function AddUserModal(props) {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              className="relative h-8 w-48 bg-lockplus-opacGray left-64 bg-opacity-50 mt-4 focus: outline-none border-2 border-lockplus-blue rounded-xl pl-4 placeholder-lockplus-placeholderGray font-light font-lockplus text-lockplus-placeholderGray"
+              className="relative h-8 w-48 bg-blue-200 left-64 bg-opacity-50 mt-4 focus: outline-none rounded-xl pl-4 placeholder-gray-400 font-light font-lockplus text-lockplus-textGray"
               placeholder="New user name"
             />
           </div>
         </ModalBody>
         <ModalFooter>
           <button
-            className="bg-lockplus-blue group h-6 w-24 mt-2 relative left-96 ml-64 top-2 rounded-full focus:outline-none transform hover:scale-105 hover:bg-lockplus-hoverblue transition ease-out duration-100 mt-1.5"
+            className="font-light text-black bg-blue-300 group h-6 w-24 mt-2 relative left-96 ml-64 top-4 rounded-full focus:outline-none hover:bg-blue-400 transition ease-out duration-100 mt-1.5"
             onClick={addUser}>
             Add User
           </button>
           <button
-            className="bg-lockplus-blue group h-6 w-24 mt-2 relative left-96 ml-2 top-2 rounded-full focus:outline-none transform hover:scale-105 hover:bg-lockplus-hoverblue transition ease-out duration-100 mt-1.5"
+            className="font-light text-black bg-blue-300 group h-6 w-24 mt-2 relative left-96 ml-2 top-4 rounded-full focus:outline-none hover:bg-blue-400 transition ease-out duration-100 mt-1.5"
             onClick={cancel}>
             Cancel
           </button>
