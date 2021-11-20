@@ -12,7 +12,7 @@ module.exports = {
           placeholderGray: '#CFCFCF',
           textGray: "#1f2937",
           backgroundBlue: '#dbeafe',
-          
+          historyBlue: '#cce1ff',
         },
       },
       fontFamily: {

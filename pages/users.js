@@ -63,7 +63,7 @@ export async function getServerSideProps(context) {
     props: {
       userList: users,
       sessionEmail: param,
-      userImages: images,
+      // userImages: images,
     },
   };
 }

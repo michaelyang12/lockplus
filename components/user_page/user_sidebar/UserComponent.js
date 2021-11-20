@@ -38,7 +38,7 @@ function UserComponent(props) {
             {rootUserText}
           </p>
         </button>
-        <div class="absolute left-48 mt-0.5">
+        <div class="absolute left-48 ml-1.5 mt-0.5">
           <DeleteUserButton 
             user={user}
             userList={props.userList}
