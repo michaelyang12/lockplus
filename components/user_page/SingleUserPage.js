@@ -8,6 +8,7 @@ function SingleUserPage(props) {
   const user = props.user;
   const header = (user + '').length == 0 ? 'No user selected' : user;
   const images = props.images;
+  const email = props.email;
   let displayImages = [];
   // const [isUserSelected, setIsUserSelected] = useState(false)
   var isUserSelected = false;
@@ -46,6 +47,7 @@ function SingleUserPage(props) {
               user={props.user}
               isUserSelected={isUserSelected}
               image={image}
+              email={email}
             />
           </div>
         ))}

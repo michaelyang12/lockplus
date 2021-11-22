@@ -15,6 +15,7 @@ function UsersForm(props) {
   const userList = props.userlist;
   const userCount = userList.length;
   const images = props.userImages;
+  const email = props.sessionEmail;
   const router = useRouter();
   const primaryUser = userList[0] ? userList[0] : '';
   console.log(props.email);
@@ -54,7 +55,7 @@ function UsersForm(props) {
         </UsersFormSidebar>
       </div>
       <div>
-        <SingleUserPage user={selectedUser} images={images} />
+        <SingleUserPage user={selectedUser} images={images} email={email} />
         <AddUserModal
           open={isModalOpen}
           toggleFunc={toggle}
