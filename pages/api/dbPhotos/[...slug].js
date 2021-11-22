@@ -7,24 +7,10 @@ require('../../../models/Lock');
 import mongoose from 'mongoose';
 const Lock = mongoose.model('Lock');
 
-//need to receieve and process more JSON data to dynamically allocate folders to different locks, different users w/in each lock
-/*
-const upload = multer({
-  storage: multer.diskStorage({
-    destination: (req, file, cb) => {
-      const { slug } = req.query;
-      const path = './uploads/' + slug.join('/');
-      fs.mkdirsSync(path);
-      cb(null, path);
-    },
-    filename: (req, file, cb) => cb(null, file.originalname),
-  }),
-}); */
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 const photoUploadApi = nc({
-  // Handle any other HTTP method
   onNoMatch(req, res) {
     res.status(405).json({ error: `Method '${req.method}' Not Allowed` });
   },
@@ -53,12 +39,6 @@ photoUploadApi.post(async (req, res) => {
     console.log(filePath);
     console.log(slug[1]);
     console.log(req.files[0]);
-    //console.log(fs.readFile(filePath));
-    //const imgData = fs.readFile(filePath);
-    //let base64 = imgData.toString('base64');
-    //console.log(base64.substr(0, 200));
-    //const imgBuffer = Buffer.from(base64, 'base64');
-    //const imgBuffer = fs.readFileSync(req.files[0].path);
     const imgBuffer = req.files[0].buffer;
     const cType = req.files[0].mimetype;
     const typeRegex = /image\//gm;
@@ -73,9 +53,23 @@ photoUploadApi.post(async (req, res) => {
     };
     console.log('newimg');
     console.log(newimg);
-    lock.images.push(newimg);
-    lock.save();
-    res.status(200).json({ success: true, message: 'Photo Uploaded!' });
+    let count = 0;
+    lock.images.forEach((image) => {
+      if (image.username === newimg.username) {
+        count++;
+      }
+    });
+    if (count < 4) {
+      lock.images.push(newimg);
+      lock.save();
+      res.status(200).json({ success: true, message: 'Photo Uploaded!' });
+    } else {
+      res.status(200).json({
+        success: true,
+        message: 'You cannot upload more than 4 images for a single user!',
+        statusText: 'count err',
+      });
+    }
   } catch (error) {
     console.log('error here');
     res.status(400).json({

@@ -22,11 +22,6 @@ export default async (req, res) => {
       const lock = await Lock.findOne(data);
       console.log('lock');
       console.log(lock);
-      //const users = lock.children_emails.unshift(lock.parent_email);
-      /* let users = [lock.parent_email];
-      lock.children_emails.forEach((email) => {
-        users.push(email);
-      }); */
       res.status(201).json({
         success: true,
         message: 'lock updated',

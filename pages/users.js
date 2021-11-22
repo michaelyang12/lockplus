@@ -14,12 +14,10 @@ function UsersPage(props) {
   //AMPLIFY edit this for redeplo
   return (
     <>
-      <div class="h-screen w-screen bg-lockplus-opacGray">
+      <div class="h-screen w-screen bg-lockplus-opacGray overscroll-contain overflow-hidden">
         <div class="relative flex bg-gray-800 justify-start">
           <div>
-            <HomeSidebar 
-              selectedTab = {"users"}
-            />
+            <HomeSidebar selectedTab={'users'} />
           </div>
           <div>
             <UsersForm
@@ -44,6 +42,7 @@ export async function getServerSideProps(context) {
   }
   console.log('param' + param);
   var users = [];
+  let images = [];
   await axios
     .post('http://localhost:3000/api/getusers', {
       email: param,
@@ -55,6 +54,7 @@ export async function getServerSideProps(context) {
     .then((response) => {
       if (response) {
         users = response.data.users;
+        images = response.data.images;
         console.log('success');
         console.log(users);
       }
@@ -63,7 +63,7 @@ export async function getServerSideProps(context) {
     props: {
       userList: users,
       sessionEmail: param,
-      // userImages: images,
+      userImages: images,
     },
   };
 }

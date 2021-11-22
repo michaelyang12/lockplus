@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 const model_name = 'Lock';
 const { Schema } = mongoose;
 
-const imageSchema = new Schema({
+const userImageSchema = new Schema({
   username: {
     type: String,
   },
@@ -15,6 +15,24 @@ const imageSchema = new Schema({
   },
 });
 
+const historyImageSchema = new Schema({
+  img: {
+    data: Buffer,
+    contentType: String,
+  },
+  accepted: {
+    type: Boolean,
+  },
+  timestamp: {
+    type: String,
+    default: Date.now(),
+  },
+  username: {
+    type: String,
+    default: 'Unknown',
+  },
+});
+
 const lockSchema = new Schema({
   lockCode: {
     type: String,
@@ -24,7 +42,7 @@ const lockSchema = new Schema({
   account_email: {
     type: String,
     required: true,
-    //unique: true,
+    unique: true,
   },
   users: {
     type: [String],
@@ -32,7 +50,11 @@ const lockSchema = new Schema({
     default: [],
   },
   images: {
-    type: [imageSchema],
+    type: [userImageSchema],
+    default: [],
+  },
+  history: {
+    type: [historyImageSchema],
     default: [],
   },
   settings: {
