@@ -1,7 +1,7 @@
 import { signOut } from 'next-auth/react';
 
 function SignOutBar() {
-  const url = 'https://amplified.df1q72ewcxxug.amplifyapp.com/';
+  const url = 'http://localhost:3000/';
   return (
     <button
       class="relative text-white flex items-center mt-48 space-x-2 px-4 ml-1 hover:text-lockplus-hoverGray"
