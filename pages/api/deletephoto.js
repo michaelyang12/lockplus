@@ -6,13 +6,11 @@ const Lock = mongoose.model('Lock');
 export default async (req, res) => {
   const { method } = req;
   await connectDB(); //async connect to the database
-  console.log('****************** in deleteuser *******************');
+  console.log('****************** in deleteimage *******************');
   if (method === 'POST') {
     try {
       const AE = req.body.email;
-      const deleteIndex = req.body.deleteIndex;
-      const username = req.body.username;
-      console.log(deleteIndex);
+      const image = req.body.image;
       const data = {
         account_email: AE,
       };
@@ -22,15 +20,8 @@ export default async (req, res) => {
       console.log('lock');
       console.log(lockToModify);
       if (lockToModify) {
-        console.log('delete found');
-        console.log(lockToModify);
-        lockToModify.users.splice(deleteIndex, 1);
-        let i = 0;
-        for (i = 0; i < lockToModify.images.length; i++) {
-          if (lockToModify.images[i].username === username) {
-            lockToModify.images.splice(i, 1);
-          }
-        }
+        const deleteIndex = lockToModify.images.indexOf(image);
+        lockToModify.images.splice(deleteIndex, 1);
         lockToModify.save();
         console.log('newlock');
         console.log(lockToModify);

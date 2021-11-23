@@ -8,8 +8,8 @@ import AddPhotosBar from './sidebar/AddPhotosBar';
 import SignOutBar from './sidebar/SignOutBar';
 
 function HomeSidebar(props) {
-  const router = useRouter();
-  const [isUserPageSelected, setIsUserPageSelected] = useState(false);
+  const router = useRouter()
+  const selectedTab = props.selectedTab
 
   return (
     <div class="relative sidebar bg-lockplus-blue text-blue-100 w-40 h-screen space-y-6 py-7 px-2">
@@ -32,9 +32,15 @@ function HomeSidebar(props) {
         </svg>
         <span class="text-2xl font-bold font-lockplus">lock +</span>
       </a>
-      <UsersBar />
-      <HistoryBar />
-      <SettingsBar />
+      <UsersBar
+        selectedItem = {selectedTab}
+      />
+      <HistoryBar
+        selectedItem = {selectedTab}
+      />
+      <SettingsBar
+        selectedItem = {selectedTab}
+      />
       {/* <AddPhotosBar /> */}
       <SignOutBar />
     </div>

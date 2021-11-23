@@ -8,7 +8,9 @@ function SettingsPage(props) {
     <div class="h-screen w-screen bg-lockplus-opacGray">
       <div class="relative flex bg-gray-800 justify-start">
         <div>
-          <HomeSidebar/>
+          <HomeSidebar 
+            selectedTab = {"settings"}
+          />
         </div>
         <div>
           <SettingsForm/>

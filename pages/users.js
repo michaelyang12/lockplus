@@ -9,19 +9,21 @@ import { getSession } from 'next-auth/react';
 function UsersPage(props) {
   const usersList = props.userList;
   const email = props.sessionEmail;
+  const images = props.userImages;
   console.log(usersList);
   //AMPLIFY edit this for redeplo
   return (
     <>
-      <div class="h-screen w-screen bg-lockplus-opacGray">
+      <div class="h-screen w-screen bg-lockplus-opacGray overscroll-contain overflow-hidden">
         <div class="relative flex bg-gray-800 justify-start">
           <div>
-            <HomeSidebar />
+            <HomeSidebar selectedTab={'users'} />
           </div>
           <div>
-            <UsersForm 
-              userlist={usersList} 
-              sessionEmail={email} 
+            <UsersForm
+              userlist={usersList}
+              sessionEmail={email}
+              userImages={images}
             />
           </div>
         </div>
@@ -40,6 +42,7 @@ export async function getServerSideProps(context) {
   }
   console.log('param' + param);
   var users = [];
+  let images = [];
   await axios
     .post('https://amplified.df1q72ewcxxug.amplifyapp.com/api/getusers', { 
       email: param 
@@ -51,6 +54,7 @@ export async function getServerSideProps(context) {
     .then((response) => {
       if (response) {
         users = response.data.users;
+        images = response.data.images;
         console.log('success');
         console.log(users);
       }
@@ -59,6 +63,7 @@ export async function getServerSideProps(context) {
     props: {
       userList: users,
       sessionEmail: param,
+      userImages: images,
     },
   };
 }

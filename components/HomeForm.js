@@ -1,7 +1,7 @@
 function HomeForm(props) {
     const userEmail = props.userEmail
     return (
-        <div class="relative container h-screen w-screen p-4 bg-gray-800 visible text-white">
+        <div class="relative container h-screen w-screen p-6 bg-lockplus-backgroundBlue visible text-lockplus-textGray">
             <div class="text-xl">
                 Welcome {userEmail}!
             </div>

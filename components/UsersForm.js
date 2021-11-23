@@ -14,34 +14,17 @@ function UsersForm(props) {
   //var users = [];
   const userList = props.userlist;
   const userCount = userList.length;
+  const images = props.userImages;
+  const email = props.sessionEmail;
   const router = useRouter();
   const primaryUser = userList[0] ? userList[0] : '';
   console.log(props.email);
-  // const nullUser = {
-  //   username: "No user selected",
-  //   function: undefined,
-  // };
-
-  /*console.log('hi');
-  //const url = '/api/users/' + props.sessionEmail;
-  const url = 'http://localhost:3000/api/getusers';
-  console.log(url);
-  const fetcher = () =>
-    axios
-      .post(url, { email: props.sessionEmail })
-      .catch((err) => console.log(err.message))
-      .then((res) => res.data.users);
-  const { data, error } = useSWR(url, fetcher, {
-    initialData: props.userlist,
-  });
-  if (error) console.log('err in fetcher');
-  if (!data) return <div className="bg-transparent"></div>;
-  console.log(data); */
 
   const [selectedUser, setSelectedUser] = useState(primaryUser);
 
   for (var i = 0; i < userCount; i++) {
-    var currentUser = userList[i];
+    const currentUser = userList[i];
+    const isPrimaryUser = currentUser == primaryUser ? true : false;
     usersDisplay.push(
       <div key={i}>
         <UserComponent
@@ -49,6 +32,7 @@ function UsersForm(props) {
           userList={props.userlist}
           selectedUser={selectedUser}
           setSelectedUser={setSelectedUser}
+          isPrimaryUser={isPrimaryUser}
         />
       </div>
     );
@@ -71,9 +55,7 @@ function UsersForm(props) {
         </UsersFormSidebar>
       </div>
       <div>
-        <SingleUserPage user={selectedUser} />
-      </div>
-      <div>
+        <SingleUserPage user={selectedUser} images={images} email={email} />
         <AddUserModal
           open={isModalOpen}
           toggleFunc={toggle}
@@ -81,6 +63,7 @@ function UsersForm(props) {
           // sessionEmail={props.email}
         />
       </div>
+      <div></div>
     </div>
   );
 }
