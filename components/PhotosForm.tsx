@@ -15,7 +15,7 @@ interface Response {
 
 export const PhotosForm = (props) => {
   const { data: session, status } = useSession();
-  const safeUser: string = slugify(props.user, {
+  const safeUser: string = slugify(props.user ?? "", {
     remove: /"<>#%\{\}\|\\\^~\[\]`;\?:@=&/g,
   });
   console.log('user');
